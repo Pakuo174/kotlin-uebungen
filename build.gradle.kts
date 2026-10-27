@@ -13,6 +13,18 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
+// Java und Kotlin müssen dasselbe JVM-Ziel haben (Kotlin 2.1 kann max. 23)
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
